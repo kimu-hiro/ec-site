@@ -8,4 +8,4 @@ sftp.json
 .claude
 
 # Excel版はgitに上げられない為
-02_画面遷移図.xlsx
+*.xlsx
