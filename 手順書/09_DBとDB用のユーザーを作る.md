@@ -123,6 +123,17 @@ SHOW DATABASES;
 
 `ec_site` がまだ無いことを確かめる。
 
+見覚えのない倉庫が並ぶが、**MariaDB が自分の仕事に使う棚**。消さない。
+
+```
+DAM                ← 自分の DAM プロジェクト
+information_schema ← DB の案内板（どんな表・列があるか。読むだけ）
+mysql              ← 鍵の名簿（ユーザーと権限）
+performance_schema ← 速さの計測器
+sys                ← 計測器を読みやすくした窓口
+test               ← 中身なしの空部屋（入れたときにできる名残）
+```
+
 ## 4. 倉庫を作る
 
 倉庫の名前は `ec_site`。
@@ -198,6 +209,7 @@ SHOW DATABASES;
 | `mariadb` で `Access denied` | `sudo mariadb` で入る（`sudo`＝superuser do＝親の権限で動かす。Mac のログインパスワードを聞かれる） |
 | `Can't connect to local server through socket` | 倉庫番が寝ている。手順 1 の `brew services start mariadb` |
 | `->` が出て止まった | `;` を忘れている。`;` だけ打って Enter |
+| `ERROR 1064 … syntax` で `near 'DATABASE'` | 命令の綴りちがい。倉庫の一覧は `DATABASE` ではなく `SHOW DATABASES;`（複数形） |
 | `ERROR 1007 … database exists` | もう作ってある。`SHOW DATABASES;` で確かめる |
 | `ERROR 1396 … CREATE USER failed` | 同じ名前の鍵がもうある。`SELECT user, host FROM mysql.user;` で確かめる |
 | 7 で `Access denied for user 'ec_user'` | パスワードの打ちまちがい、または 6 をやっていない |
