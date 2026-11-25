@@ -212,16 +212,17 @@ SHOW DATABASES;
 | `ERROR 1064 … syntax` で `near 'DATABASE'` | 命令の綴りちがい。倉庫の一覧は `DATABASE` ではなく `SHOW DATABASES;`（複数形） |
 | `ERROR 1007 … database exists` | もう作ってある。`SHOW DATABASES;` で確かめる |
 | `ERROR 1396 … CREATE USER failed` | 同じ名前の鍵がもうある。`SELECT user, host FROM mysql.user;` で確かめる |
+| 7 で `test` も見える | MariaDB が最初から全員に開けている部屋。Mac だけなら残してもよい。消すなら root で `DROP DATABASE test;` ＋ 名簿の行も `DELETE FROM mysql.db WHERE db LIKE 'test%';` → `FLUSH PRIVILEGES;`（2026-11-25 に消した） |
 | 7 で `Access denied for user 'ec_user'` | パスワードの打ちまちがい、または 6 をやっていない |
 | パスワードを忘れた | root で入って `ALTER USER 'ec_user'@'localhost' IDENTIFIED BY '新しいパスワード';` |
 
 ## できたら
 
-- [ ] `ec_site` を作った（utf8mb4）
-- [ ] `ec_user` を作り、パスワードを「パスワード」アプリに控えた
-- [ ] `ec_user` に `ec_site` だけの権限を渡した
-- [ ] `ec_user` で入って、`ec_site` だけが見えた
-- [ ] Claude に見せた
+- [x] `ec_site` を作った（utf8mb4）
+- [x] `ec_user` を作り、パスワードを「パスワード」アプリに控えた
+- [x] `ec_user` に `ec_site` だけの権限を渡した
+- [x] `ec_user` で入って、`ec_site` だけが見えた
+- [x] Claude に見せた
 
 git に入れるファイルは無い（手順書は Claude が入れる）。
 
