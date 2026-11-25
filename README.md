@@ -1,1 +1,1 @@
-# php-ec-site
+# ec-site
